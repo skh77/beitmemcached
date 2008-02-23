@@ -6,10 +6,8 @@ Add your content here.
 
 === Socket pool ==
 
-=== Logging ===
-
-=== Exceptions ===
-
-=== Code ===
+=== Errors, Exceptions and Logging ===
 
 === Performance ===
+
+=== Code ===
