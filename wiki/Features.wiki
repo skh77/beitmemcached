@@ -1,0 +1,15 @@
+#summary The features of the BeITMemcached client.
+
+= Features =
+
+Add your content here.
+
+=== Socket pool ==
+
+=== Logging ===
+
+=== Exceptions ===
+
+=== Code ===
+
+=== Performance ===
