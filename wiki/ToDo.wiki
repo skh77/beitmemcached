@@ -1,13 +1,29 @@
 #summary TODO-list for this project
 
-= Introduction =
+= TODO-list for this project =
 
-Add your content here.
+Here are some features that we would like to implement in the BeIT Memcached client:
 
+=== Parallell multi-get ===
 
-= Details =
+=== Asynchronous Connect ===
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+=== Better Stats ===
+
+The Stats method should take a key or a hash, and return the stats result from that specific server.
+
+=== Better Flush All ===
+
+The memcached command "flush_all" can accept an optional time parameter. If specified, it will delay the flush command. This can be used to stagger the flushing across multiple servers, which is useful since flushing all servers at the same time would put a lot of pressure on the data sources as the entire cache is repopulated at once.
+
+There should be a `public bool FlushAll(TimeSpan time)` method which would result in the following commands being sent:
+
+{{{
+server1: flush_all 0
+server2: flush_all <time>
+server3: flush_all <time * 2>
+server4: flush_all <time * 3>
+...etc
+}}}
+
+===  ===
