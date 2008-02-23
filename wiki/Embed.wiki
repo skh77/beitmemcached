@@ -10,6 +10,6 @@ You have multiple options for embedding the client in your code.
   * Change the output type of the project to Class Library, compile, copy the resulting .dll to your project and include it.
 
 = Using the code in your project =
-The only class you need to access is the BeIT.MemCached.MemcachedClient class. Start by calling the static Setup method with a name and a list of memcached servers that the client should use. Then call the GetInstance method to get this instance of the client. On that object you can then call the various methods such as Set and Get to use the cache.
+The only class you need to access is the `BeIT.MemCached.MemcachedClient` class. Start by calling the static `Setup` method with a name and a list of memcached servers that the client should use. Then call the `GetInstance` method to get this instance of the client. On that object you can then call the various methods such as `Set` and `Get` to use the cache.
 
 Check the [Examples] page for more detailed usage info, and check the code itself for a complete list of all methods and their overloads.
