@@ -12,6 +12,11 @@ Depending on your application and environment you may wish to tweak these proper
 It is also possible to disable socket pooling simply by setting both `MinPoolSize` and `MaxPoolSize` to 0.
 
 === Hashing and Server Selection ===
+The default hashing algorithm used for keys is the modified Fowler-Voll-No hash as described and discussed on http://www.isthe.com/chongo/tech/comp/fnv/ and http://home.comcast.net/~bretm/hash/6.html. This hash is very fast, has a good and uniform distribution, and a good avalanche behaviour, which is exactly the properties that are important for a memcached client since it's about scattering keys as much as possible.
+
+We are using the "ketama" method for choosing a server depending on the hash of the key as described here: http://lists.danga.com/pipermail/memcached/2007-April/003834.html. The advantage of this method is that it consistently maps a given key to the same server, and if a server is added or removed from the configuration, the mapping stays mostly intact. If a server is removed, the keys that mapped to it will be evenly distributed among the remaining servers. If a server is added, it will take over an even distribution of keys that mapped to other servers.
+
+=== Custom Serialization and Encoding ===
 
 === Failover ===
 
