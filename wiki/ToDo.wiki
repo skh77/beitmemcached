@@ -12,6 +12,10 @@ Currently, the multi-get method builds a list of servers it needs to talk to, an
 
 Another use of the asynchronous socket methods is to perform the socket connections asynchronously, which should allow us to check the connection timeout properly.
 
+=== Automatic Configuration ===
+
+When calling the GetInstance method and there is not instance configured with the given name, the client should check the standard configuration files (app.config/web.config) for  configuration info and create and return an instance based on that. It should be possible to parse custom configuration sections without creating a custom ConfigurationSection class.
+
 === Better Stats ===
 
 The Stats method should take a key or a hash, and return the stats result from that specific server.
