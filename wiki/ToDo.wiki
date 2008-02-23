@@ -6,7 +6,11 @@ Here are some features that we would like to implement in the BeIT Memcached cli
 
 === Parallell multi-get ===
 
+Currently, the multi-get method builds a list of servers it needs to talk to, and then retrieves the objects sequentially. Using the asynchronous socket methods with callbacks, it should be possible to parallellize this, which would further speed up the client.
+
 === Asynchronous Connect ===
+
+Another use of the asynchronous socket methods is to perform the socket connections asynchronously, which should allow us to check the connection timeout properly.
 
 === Better Stats ===
 
@@ -25,5 +29,3 @@ server3: flush_all <time * 2>
 server4: flush_all <time * 3>
 ...etc
 }}}
-
-===  ===
