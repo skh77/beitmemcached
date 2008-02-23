@@ -1,5 +1,7 @@
 #summary Example code that shows you how to use the BeIT Memcached client
 
+=== This is the contents of Example.cs ===
+
 {{{
 using System;
 using BeIT.MemCached;
