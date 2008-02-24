@@ -29,6 +29,8 @@ To decrease the size of the objects stored in the memcached servers, the client 
 
 All other objects go through the regular `BinaryFormatter` runtime serializer.
 
+The type indicator is stored in the flags field according to the values given in the 'SerializedType' enum.
+
 === Failover ===
 This client does not support automatic server failover. At first glance, failover seems like a good idea. If a memcached server goes down, the application would automatically spread its items to the remaining servers, and when it goes up again, it would resume responsibility for its original keys.
 
@@ -37,7 +39,13 @@ However, if you look at it in detail, you will see that as soon as a server fail
 If a server should fail, the client will instead mark that server as dead, log the error, and retry at a specified time interval later. All method calls that would land on the dead server would instantly fail, and a portion of the data would simply not be cached. As a server administrator you can then either get the server back up, or remove it from the configuration. Either way, there will be no synchronization issues in the application.
 
 === Errors, Exceptions and Logging ===
+As a general rule, the client will *never* throw exceptions for runtime errors such as communicating with the servers. If something goes wrong while connecting, serializing, deserializing, sending data, or receiving data, it will simply appear as a cache miss in the get methods, and a failure in the store methods, and the actual error will be logged in the background.
+
+Exceptions will generally be thrown on startup errors and programmatical errors. If a client is not configured properly, or if it is unable to resolve a host, it will throw a `ConfigurationErrorsException` with an appropriate message. If the client is used improperly such as given keys that do not conform to the memcached protocol specification, it will throw an `ArgumentException` or similar. This should allow you to quickly find errors from improper use of it.
+
+There are many logging frameworks for .Net, and rather than ship the client with our favourite logging framework and an unnecessary dependency, we created a `LogAdapter` that is easily modified to whatever logging framework you are using, and by default does simple logging to the Console. This means that everyone can get their logging the way they want it.
 
 === Performance and Stability ===
+We have performed extensive functional testing and performance testing of the BeIT Memcached client and we are satisifed that it is working as it should. When we compared the performance against two other clients, the [https://sourceforge.net/projects/memcacheddotnet/ java port] and the [http://www.codeplex.com/EnyimMemcached/ Enyim memcached client], our client consumed the least resources and had the best performance. It is also following the memcached protocol specifications more strictly, has the most memcached features, and is still much smaller in actual code size.
 
-=== Code ===
+As for stability, we have used our client succesfully in a number of consultancy projects, including one 100+ server web application where it has been live for several months without any problems.
