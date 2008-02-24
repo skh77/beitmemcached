@@ -48,4 +48,4 @@ There are many logging frameworks for .Net, and rather than ship the client with
 === Performance and Stability ===
 We have performed extensive functional testing and performance testing of the BeIT Memcached client and we are satisifed that it is working as it should. When we compared the performance against two other clients, the [https://sourceforge.net/projects/memcacheddotnet/ java port] and the [http://www.codeplex.com/EnyimMemcached/ Enyim memcached client], our client consumed the least resources and had the best performance. It is also following the memcached protocol specifications more strictly, has the most memcached features, and is still much smaller in actual code size.
 
-As for stability, we have used our client succesfully in a number of consultancy projects, including one 100+ server web application where it has been live for several months without any problems.
+As for stability, we have used our client succesfully in a number of consultancy projects, including one 100+ server web application where it has been live for several months without any problems. We are therefore confident that this client is fit for use in any project.
