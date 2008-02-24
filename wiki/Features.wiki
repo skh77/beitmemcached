@@ -30,6 +30,11 @@ To decrease the size of the objects stored in the memcached servers, the client 
 All other objects go through the regular `BinaryFormatter` runtime serializer.
 
 === Failover ===
+This client does not support automatic server failover. At first glance, failover seems like a good idea. If a memcached server goes down, the application would automatically spread its items to the remaining servers, and when it goes up again, it would resume responsibility for its original keys.
+
+However, if you look at it in detail, you will see that as soon as a server fails, this would be detected by the entire application at roughly the same time, and the failover would be smooth. But when that server comes back online, not all parts of the application would detect this at the same time, it would depend on how often each client retries the failing server. This means that automatic failover can cause application-wide synchronization errors, which according to the underlying philosophy of memcached, is something that should never, ever happen. Therefore, the BeIT Memcached client does not support automatic failover.
+
+If a server should fail, the client will instead mark that server as dead, log the error, and retry at a specified time interval later. All method calls that would land on the dead server would instantly fail, and a portion of the data would simply not be cached. As a server administrator you can then either get the server back up, or remove it from the configuration. Either way, there will be no synchronization issues in the application.
 
 === Errors, Exceptions and Logging ===
 
