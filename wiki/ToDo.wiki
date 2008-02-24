@@ -20,10 +20,6 @@ Some methods such as the counter-related ones and delete does not have overloads
 
 Not all features of the memcached protocol are implemented such as "cas", "append" and "prepend".
 
-=== Automatic Configuration ===
-
-When calling the GetInstance method and there is no instance configured with the given name, the client should check the standard configuration files (app.config/web.config) for  configuration info and create and return an instance based on that. It should be possible to parse custom configuration sections without creating a custom ConfigurationSection class.
-
 === Better Stats ===
 
 The Stats method should take a key or a hash, and return the stats result from that specific server.
