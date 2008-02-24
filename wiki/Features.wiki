@@ -2,7 +2,7 @@
 
 = Features =
 
-Add your content here.
+This page describes the main features and goes into some detail on the underlying algorithms and design choices.
 
 === Socket Pooling ==
 The BeIT Memcached client contains a variable-size socket pool to increase performance by maximizing the reuse of connected sockets. The client maintains one pool per memcached server it is configured to use. Under heavy use, the pool will grow in size up to the value specified by the `MaxPoolSize` property. With less use, the pool will shrink in size to the value specified by the `MinPoolSize` property. It is also possible to configure the speed with which the pool shrinks back using the `SocketRecycleAge` property. Finally, there is a `SendReceieveTimeout` property which controls the socket send timeout, receive timeout and connection timeout.
