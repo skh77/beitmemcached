@@ -71,6 +71,15 @@ namespace BeITMemcached {
 	            Console.Out.WriteLine("Decremented mycounter with 9000, new value: " + counter.Value);
             }
 
+            Console.Out.WriteLine("Displaying the socketpool status:");
+            foreach (KeyValuePair<string, Dictionary<string, string>> host in cache.Status()) {
+                Console.Out.WriteLine("Host: " + host.Key);
+                foreach (KeyValuePair<string, string> item in host.Value) {
+                    Console.Out.WriteLine("\t" + item.Key + ": " + item.Value);
+                }
+                Console.Out.WriteLine();
+            }
+
             Console.Out.WriteLine();
             Console.Out.WriteLine("Finished. Press enter to exit.");
             Console.In.ReadLine();
