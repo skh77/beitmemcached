@@ -17,6 +17,17 @@ The default hashing algorithm used for keys is the modified Fowler-Voll-No hash 
 We are using the "ketama" method for choosing a server depending on the hash of the key as described here: http://lists.danga.com/pipermail/memcached/2007-April/003834.html. The advantage of this method is that it consistently maps a given key to the same server, and if a server is added or removed from the configuration, the mapping stays mostly intact. If a server is removed, the keys that mapped to it will be evenly distributed among the remaining servers. If a server is added, it will take over an even distribution of keys that mapped to other servers.
 
 === Custom Serialization and Encoding ===
+To decrease the size of the objects stored in the memcached servers, the client implements a custom serialization scheme. Objects of the following types are serialized directly into their native byte representation:
+
+`bool, byte, short, ushort, int, uint, long, ulong, float, double` are serialized into their native byte representation.
+
+`DateTime` is serialized into a `long` containing the Ticks value.
+
+`string` is encoded in UTF8.
+
+`byte[]` is stored straight without any conversion.
+
+All other objects go through the regular `BinaryFormatter` runtime serializer.
 
 === Failover ===
 
