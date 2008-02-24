@@ -22,7 +22,7 @@ Not all features of the memcached protocol are implemented such as "cas", "appen
 
 === Automatic Configuration ===
 
-When calling the GetInstance method and there is not instance configured with the given name, the client should check the standard configuration files (app.config/web.config) for  configuration info and create and return an instance based on that. It should be possible to parse custom configuration sections without creating a custom ConfigurationSection class.
+When calling the GetInstance method and there is no instance configured with the given name, the client should check the standard configuration files (app.config/web.config) for  configuration info and create and return an instance based on that. It should be possible to parse custom configuration sections without creating a custom ConfigurationSection class.
 
 === Better Stats ===
 
