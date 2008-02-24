@@ -5,7 +5,7 @@ Simply download the source archive from the project home, or check out the files
 
 = Embedding the code into your project =
 You have multiple options for embedding the client in your code.
-  * Copy all the .cs files in the clientLibrary folder to your project, include them, and make sure your project references System and System.Configuration.
+  * Copy all the .cs files in the !ClientLibrary folder to your project, include them, and make sure your project references System and System.Configuration.
   * _or_ Copy the entire BeIT Memcached project to your solution and include it.
   * _or_ Change the output type of the project to Class Library, compile, copy the resulting .dll to your project and include it.
 
