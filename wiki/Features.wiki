@@ -31,6 +31,9 @@ All other objects go through the regular `BinaryFormatter` runtime serializer.
 
 The type indicator is stored in the flags field according to the values given in the 'SerializedType' enum.
 
+=== Compression ===
+The client also supports compression for storing large objects. It uses the built-in DeflateStream compression, which compresses data into the Deflate format. If the bytearray that is to be stored is larger than the value specified in the property `CompressionThreshold`, the data will be compressed before stored in the memcached servers, and automatically decompressed when retrived. The default value of `CompressionThreshold` is 128 kB.
+
 === Failover ===
 This client does not support automatic server failover. At first glance, failover seems like a good idea. If a memcached server goes down, the application would automatically spread its items to the remaining servers, and when it goes up again, it would resume responsibility for its original keys.
 
