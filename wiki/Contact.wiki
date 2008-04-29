@@ -1,5 +1,4 @@
 #summary Contact information for this project.
-#labels Featured
 
 = Authors =
 
