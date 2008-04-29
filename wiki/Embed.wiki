@@ -1,4 +1,5 @@
 #summary How to embed the BeIT Memcached client in your project.
+#labels Phase-Implementation
 
 = Getting the code =
 Simply download the source archive from the project home, or check out the files from svn from the project source page. Either way, you will get a complete Visual Studio 2005 solution which contains the client and some example code that shows how it's used.
