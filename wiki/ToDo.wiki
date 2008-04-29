@@ -20,7 +20,3 @@ Some methods such as the counter-related ones and delete does not have overloads
 === Make the client feature-complete ===
 
 Not all features of the memcached protocol are implemented such as "cas", "append" and "prepend".
-
-=== Better Stats ===
-
-The Stats method should take a key or a hash, and return the stats result from that specific server.
