@@ -12,11 +12,3 @@ Currently, the multi-get method builds a list of servers it needs to talk to, an
 === Asynchronous Connect ===
 
 Another use of the asynchronous socket methods is to perform the socket connections asynchronously, which should allow us to check the connection timeout properly.
-
-=== More overloads ===
-
-Some methods such as the counter-related ones and delete does not have overloads where you can specify expiry times.
-
-=== Make the client feature-complete ===
-
-Not all features of the memcached protocol are implemented such as "cas", "append" and "prepend".
