@@ -13,6 +13,6 @@ Currently, the multi-get method builds a list of servers it needs to talk to, an
 
 Another use of the asynchronous socket methods is to perform the socket connections asynchronously, which should allow us to check the connection timeout properly.
 
-=== Flexible Key Transformers, Serializers and Server Distribution ===
+=== Flexible Key Transformers, Serializers and Server Distributors ===
 
 For compatibility reasons with other memcached clients in other languages, it would be nice if you could easily change the behaviour of the client so that it matches some other client better. For that, we need a key transformer if you for example want your keys base64-encoded instead of utf8 like our client does now. We also need to open up the serializer so you can choose serialization methods yourself, and choose the values of the flags parameter yourself. And finally, we should make it possible to change the algorithm for server distribution. The current implementation is kinda like libketama, but not exactly. All of this together would make our client more compatible with other clients, which is always a nice thing.
