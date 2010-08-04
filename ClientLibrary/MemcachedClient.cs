@@ -480,7 +480,7 @@ namespace BeIT.MemCached{
 
 				List<int> positions;
 				if(!getsForServer.TryGetValue(keys[i], out positions)){
-					getsForServer[keys[i]] = positions = new List<int>();
+					getsForServer[keyPrefix + keys[i]] = positions = new List<int>();
 				}
 				positions.Add(i);
 			}
@@ -494,7 +494,6 @@ namespace BeIT.MemCached{
 					StringBuilder getRequest = new StringBuilder(command);
 					foreach (KeyValuePair<string, List<int>> key in kv.Value) {
 						getRequest.Append(" ");
-						getRequest.Append(keyPrefix);
 						getRequest.Append(key.Key);
 					}
 					getRequest.Append("\r\n");
